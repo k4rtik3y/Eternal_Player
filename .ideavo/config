@@ -1,0 +1,53 @@
+{
+  "systemSetup": [
+    {
+      "name": "Install SDKMAN",
+      "command": "curl -fsSL https://get.sdkman.io | bash"
+    },
+    {
+      "name": "Install Java 21",
+      "command": "source \"$HOME/.sdkman/bin/sdkman-init.sh\" && sdk install java 21.0.12+1.1-tem"
+    },
+    {
+      "name": "Install Android SDK",
+      "command": "if [ ! -x \"$HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager\" ]; then mkdir -p \"$HOME/android-sdk/cmdline-tools\" && curl -fsSL \"https://dl.google.com/android/repository/commandlinetools-linux-14742923_latest.zip\" -o \"/tmp/android-commandline-tools.zip\" && unzip -q \"/tmp/android-commandline-tools.zip\" -d \"$HOME/android-sdk/cmdline-tools\" && mv \"$HOME/android-sdk/cmdline-tools/cmdline-tools\" \"$HOME/android-sdk/cmdline-tools/latest\"; fi && source \"$HOME/.sdkman/bin/sdkman-init.sh\" && yes | \"$HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager\" --sdk_root=\"$HOME/android-sdk\" \"platform-tools\" \"platforms;android-37.0\" \"build-tools;37.0.0\" \"ndk;27.0.12077973\""
+    }
+  ],
+  "templateName": "custom",
+  "projectDependencies": [
+    {
+      "name": "Resolve Dependencies",
+      "command": "source \"$HOME/.sdkman/bin/sdkman-init.sh\" && export ANDROID_HOME=\"$HOME/android-sdk\" ANDROID_SDK_ROOT=\"$HOME/android-sdk\" && chmod +x ./gradlew && ./gradlew --no-daemon --console=plain -Dorg.gradle.jvmargs=\"-Xmx2048M -XX:+UseParallelGC\" dependencies"
+    }
+  ],
+  "codeChecks": [
+    {
+      "name": "Lint Debug APK",
+      "command": "source \"$HOME/.sdkman/bin/sdkman-init.sh\" && export ANDROID_HOME=\"$HOME/android-sdk\" ANDROID_SDK_ROOT=\"$HOME/android-sdk\" && ./gradlew --no-daemon --console=plain -Dorg.gradle.jvmargs=\"-Xmx2048M -XX:+UseParallelGC\" :app:lintUniversalFossDebug"
+    }
+  ],
+  "buildSteps": [
+    {
+      "name": "Build Debug APK",
+      "command": "source \"$HOME/.sdkman/bin/sdkman-init.sh\" && export ANDROID_HOME=\"$HOME/android-sdk\" ANDROID_SDK_ROOT=\"$HOME/android-sdk\" && ./gradlew --no-daemon --console=plain -Dorg.gradle.jvmargs=\"-Xmx2048M -XX:+UseParallelGC\" assembleUniversalFossDebug"
+    }
+  ],
+  "runStep": [],
+  "deploySteps": [],
+  "cleanupFiles": [
+    ".gradle/",
+    ".kotlin/",
+    "**/build/",
+    "**/.cxx/",
+    "**/.externalNativeBuild/",
+    "app/persistent-debug.keystore",
+    "local.properties"
+  ],
+  "packageManager": "gradle",
+  "envPaths": [
+    {
+      "name": "default",
+      "path": ".env"
+    }
+  ]
+}
