@@ -97,6 +97,9 @@ input[type="range"] { accent-color: var(--accent); cursor: pointer; }
 .section-heading { align-items: end; display: flex; justify-content: space-between; margin-bottom: 15px; }
 .section-heading h2 { font-size: 26px; letter-spacing: -.07em; margin: 6px 0 0; }
 .mix-grid { display: grid; gap: 12px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.search-bar-row { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr) auto; margin-bottom: 16px; }
+.search-bar-row input { background: rgba(244, 255, 250, .05); border: 1px solid var(--line); border-radius: 99px; color: var(--ink); font-size: 13px; outline: none; padding: 12px 20px; }
+.search-bar-row input:focus { border-color: var(--accent); }
 .mix-card { background: rgba(224, 255, 241, .065); border: 1px solid transparent; border-radius: 17px; cursor: pointer; min-width: 0; overflow: hidden; padding: 8px; text-align: left; transition: background .2s, border-color .2s, transform .2s; }
 .mix-card:hover { background: rgba(224, 255, 241, .12); border-color: var(--line); transform: translateY(-4px); }
 .mix-card img { aspect-ratio: 1; border-radius: 11px; display: block; object-fit: cover; width: 100%; }
