@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071114" />
+    <meta name="description" content="VIVI Music in the browser" />
+    <title>VIVI / Sound in motion</title>
+    <script type="module" crossorigin src="/assets/index-BBKK-K0b.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DqB2z9sq.css">
+  </head>
+  <body>
+    <div class="aurora aurora-one"></div>
+    <div class="aurora aurora-two"></div>
+    <div class="grain"></div>
+
+    <main class="app-shell">
+      <aside class="side-rail glass-panel">
+        <a class="brand" href="#top" aria-label="VIVI Music home">
+          <span class="brand-mark">V</span>
+          <span>VIVI</span>
+        </a>
+
+        <nav aria-label="Primary navigation">
+          <button class="nav-item is-active" data-view="listen"><span>01</span> Listen</button>
+          <button class="nav-item" data-view="library"><span>02</span> Library</button>
+          <button class="nav-item" data-view="search"><span>03</span> Search</button>
+        </nav>
+
+        <div class="rail-bottom">
+          <div class="listening-now">
+            <span class="pulse-dot"></span>
+            <span>LOSSLESS / WEB</span>
+          </div>
+          <label class="import-button" for="audio-file">+ Add local audio</label>
+          <input id="audio-file" type="file" accept="audio/*" hidden />
+        </div>
+      </aside>
+
+      <section class="stage" id="top">
+        <header class="topbar">
+          <p class="eyebrow">GOOD EVENING / 23:47</p>
+          <div class="topbar-actions">
+            <button class="round-button" id="fullscreen-button" aria-label="Toggle fullscreen">[]</button>
+            <button class="profile-button" aria-label="Open profile">MV</button>
+          </div>
+        </header>
+
+        <section class="hero" aria-labelledby="now-playing">
+          <div class="hero-copy">
+            <p class="eyebrow">NOW IN YOUR FIELD</p>
+            <h1 id="now-playing">Blinding<br /><em>Lights</em></h1>
+            <p class="artist" id="artist-name">The Weeknd <span>/ After Hours</span></p>
+            <div class="hero-actions">
+              <button class="primary-action" id="hero-play">Play track <span>--&gt;</span></button>
+              <button class="text-action" id="like-button" aria-pressed="false">Save to library</button>
+            </div>
+          </div>
+
+          <div class="record-world" aria-label="Album art for Blinding Lights">
+            <div class="orbital orbital-one"></div>
+            <div class="orbital orbital-two"></div>
+            <div class="record-shadow"></div>
+            <div class="album-orbit">
+              <img id="album-image" src="/assets/weeknd-DEDoeOpl.webp" alt="The Weeknd" />
+              <div class="album-glare"></div>
+            </div>
+            <p class="art-caption">VIVI ORIGINAL<br />WAVEFORM STUDY 06</p>
+          </div>
+        </section>
+
+        <section class="lower-grid">
+          <article class="glass-panel waveform-card">
+            <div class="card-heading">
+              <p class="eyebrow">SIGNAL</p>
+              <span id="time-label">0:00 / 3:20</span>
+            </div>
+            <canvas id="visualizer" aria-label="Audio visualizer"></canvas>
+            <input id="seek-bar" type="range" min="0" max="100" value="0" aria-label="Seek track" />
+            <div class="player-controls">
+              <button class="control-button" id="previous-button" aria-label="Previous track">|&lt;</button>
+              <button class="play-button" id="play-button" aria-label="Play track">PLAY</button>
+              <button class="control-button" id="next-button" aria-label="Next track">&gt;|</button>
+              <button class="control-button shuffle" aria-label="Shuffle queue">~</button>
+              <div class="volume-control"><span>VOL</span><input id="volume" type="range" min="0" max="100" value="78" aria-label="Volume" /></div>
+            </div>
+          </article>
+
+          <article class="lyrics-card glass-panel">
+            <div class="card-heading">
+              <p class="eyebrow">LYRIC TRACE</p>
+              <button class="text-action" id="lyrics-toggle">Focus</button>
+            </div>
+            <div class="lyrics-window" id="lyrics-window">
+              <p>I've been tryna call</p>
+              <p>I've been on my own for long enough</p>
+              <p class="is-current">Maybe you can show me how to love, maybe</p>
+              <p>I'm going through withdrawals</p>
+              <p>You don't even have to do too much</p>
+            </div>
+          </article>
+        </section>
+      </section>
+
+      <aside class="queue-panel glass-panel">
+        <div class="queue-heading">
+          <div>
+            <p class="eyebrow">NEXT IN FLOW</p>
+            <h2>Queue <span>04</span></h2>
+          </div>
+          <button class="round-button" id="queue-clear" aria-label="Clear queue">x</button>
+        </div>
+        <ol class="queue-list" id="queue-list"></ol>
+        <div class="queue-footer">
+          <p>CURATED FOR THIS MOMENT</p>
+          <div class="color-chips"><i></i><i></i><i></i><i></i></div>
+        </div>
+      </aside>
+    </main>
+
+    <audio id="audio-player"></audio>
+  </body>
+</html>
