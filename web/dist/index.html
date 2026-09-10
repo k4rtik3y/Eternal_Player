@@ -6,8 +6,8 @@
     <meta name="theme-color" content="#071114" />
     <meta name="description" content="VIVI Music in the browser" />
     <title>VIVI / Sound in motion</title>
-    <script type="module" crossorigin src="/assets/index-BBKK-K0b.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DqB2z9sq.css">
+    <script type="module" crossorigin src="/assets/index-04_C2wwL.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Yb1E2EN8.css">
   </head>
   <body>
     <div class="aurora aurora-one"></div>
@@ -41,8 +41,9 @@
         <header class="topbar">
           <p class="eyebrow">GOOD EVENING / 23:47</p>
           <div class="topbar-actions">
+            <button class="theme-button" id="theme-button" aria-expanded="false" aria-controls="theme-picker">Theme</button>
             <button class="round-button" id="fullscreen-button" aria-label="Toggle fullscreen">[]</button>
-            <button class="profile-button" aria-label="Open profile">MV</button>
+            <button class="profile-button profile-signin" id="profile-button" aria-label="Open Google sign-in">Sign in</button>
           </div>
         </header>
 
@@ -100,6 +101,14 @@
             </div>
           </article>
         </section>
+
+        <section class="mix-section" aria-labelledby="mixes-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">MADE FOR THE MOMENT</p><h2 id="mixes-title">Your rotation</h2></div>
+            <button class="text-action">See all</button>
+          </div>
+          <div class="mix-grid" id="mix-grid"></div>
+        </section>
       </section>
 
       <aside class="queue-panel glass-panel">
@@ -118,6 +127,34 @@
       </aside>
     </main>
 
+    <section class="theme-picker glass-panel" id="theme-picker" aria-label="Choose player theme" hidden>
+      <div class="card-heading"><p class="eyebrow">COLOR ATMOSPHERE</p><button class="text-action" id="theme-close">Close</button></div>
+      <div class="theme-options">
+        <button class="theme-option is-selected" data-theme="lagoon"><i></i><span>Lagoon</span><small>liquid green</small></button>
+        <button class="theme-option" data-theme="ember"><i></i><span>Ember</span><small>sunset red</small></button>
+        <button class="theme-option" data-theme="ultraviolet"><i></i><span>Ultraviolet</span><small>electric blue</small></button>
+        <button class="theme-option" data-theme="pearl"><i></i><span>Pearl</span><small>silver light</small></button>
+      </div>
+    </section>
+
+    <section class="auth-panel glass-panel" id="auth-panel" aria-label="Google account and YouTube playlists" hidden>
+      <div class="card-heading"><p class="eyebrow">YOUR GOOGLE ACCOUNT</p><button class="text-action" id="auth-close">Close</button></div>
+      <div class="auth-status" id="auth-status">Connect Google to import your YouTube Music playlists.</div>
+      <button class="google-button" id="google-login">Continue with Google</button>
+      <div class="playlist-area" id="playlist-area" hidden>
+        <div class="playlist-heading"><p class="eyebrow">YOUR PLAYLISTS</p><button class="text-action" id="playlist-refresh">Refresh</button></div>
+        <div class="playlist-list" id="playlist-list"></div>
+        <button class="text-action signout-button" id="google-logout">Sign out</button>
+      </div>
+    </section>
+
+    <footer class="player-dock glass-panel" aria-label="Persistent music player">
+      <div class="dock-track"><img id="dock-art" src="/assets/weeknd-DEDoeOpl.webp" alt="" /><div><b id="dock-title">Blinding Lights</b><span id="dock-artist">The Weeknd</span></div><button class="dock-heart" id="dock-heart" aria-label="Save track">+</button></div>
+      <div class="dock-center"><div class="dock-controls"><button id="dock-previous" aria-label="Previous track">|&lt;</button><button class="dock-play" id="dock-play" aria-label="Play track">PLAY</button><button id="dock-next" aria-label="Next track">&gt;|</button></div><div class="dock-progress"><span id="dock-current-time">0:00</span><input id="dock-seek" type="range" min="0" max="100" value="0" aria-label="Seek track" /><span id="dock-duration">3:20</span></div></div>
+      <div class="dock-tools"><button aria-label="Open queue">Queue</button><button aria-label="Connect device">Connect</button></div>
+    </footer>
+
     <audio id="audio-player"></audio>
+    <div id="youtube-player" class="youtube-player" aria-hidden="true"></div>
   </body>
 </html>
